@@ -3,7 +3,7 @@ COMPONENT COUNT
 -------------------------------------------------------------
 Find products that do not have correct component count (Correct component count: 21)
 
-Log File:
+Log File: .csv
 Index,Component Count,Product Title,SKU,Product ID,URL,Missing Components
 missing component 1 /// missing component 2 /// missing component 3
 
