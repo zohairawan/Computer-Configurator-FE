@@ -7,7 +7,7 @@ import org.openqa.selenium.interactions.Actions;
 
 public class BasePage {
 
-    private WebDriver driver;
+    protected WebDriver driver;
 
     public BasePage(WebDriver driver) {
         this.driver = driver;
