@@ -28,7 +28,8 @@ public class AllComputersPage extends BasePage {
         }
     }
 
-    public void clickOnProduct(int index) {
+    public ProductPage clickOnProduct(int index) {
         click(By.xpath("(//h2[@class='woocommerce-loop-product__title'])["+index+"]"));
+        return new ProductPage(driver);
     }
 }
