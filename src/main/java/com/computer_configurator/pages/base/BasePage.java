@@ -1,9 +1,12 @@
 package com.computer_configurator.pages.base;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+
+import java.util.List;
 
 public class BasePage {
 
@@ -15,6 +18,10 @@ public class BasePage {
 
     public WebElement find(By locator) {
         return driver.findElement(locator);
+    }
+
+    public List<WebElement> findAll(By locator) {
+        return driver.findElements(locator);
     }
 
     public void set(By locator, String text) {
@@ -32,5 +39,15 @@ public class BasePage {
 
     public void scrollTo(By locator) {
         new Actions(driver).scrollToElement(find(locator)).perform();
+    }
+
+    public void scrollToJS(By locator) {
+        WebElement webElement = find(locator);
+        String script = "arguments[0].scrollIntoView(true);";
+        ((JavascriptExecutor) driver).executeScript(script, webElement);
+    }
+
+    public String getCurrentURL() {
+        return driver.getCurrentUrl();
     }
 }
