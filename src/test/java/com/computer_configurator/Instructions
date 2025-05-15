@@ -1,0 +1,158 @@
+-------------------------------------------------------------
+COMPONENT COUNT
+-------------------------------------------------------------
+Find products that do not have correct component count (Correct component count: 21)
+
+Log File:
+Index,Component Count,Product Title,SKU,Product ID,URL,Missing Components
+missing component 1 /// missing component 2 /// missing component 3
+
+Component Master List:
+Motherboard
+CPU (Processor)
+CPU Cooler
+RAM
+Graphics Card
+Professional Sound Card
+Wi-Fi & Bluetooth Card
+Capture Card
+Operating System
+Operating System Drive
+Storage Drive 1
+Storage Drive 2
+Power Supply Unit
+Chassis Fans
+Case
+Primary Monitor
+Secondary Monitor
+Color Calibrator for Monitor
+Keyboard
+Mouse
+Mousepad
+
+Page 1 - Component Count
+Ultimate-Computer is missing Motherboard and Storage Drive 1
+Good-Computer is missing CPU (Processor) and Storage Drive 2
+Ultimate-VR is missing Wi-Fi & Bluetooth Card and Operating System Drive
+
+-------------------------------------------------------------
+COMPONENT LIST
+-------------------------------------------------------------
+Find products that have "Choose an option" selected ("custom built" computers having this option selected is fine though)
+
+Log File:
+Log Index,Product Title,SKU,Product ID,URL,Component with incorrect default option
+
+Page 2 - Component List (Choose an Option)
+BETTER-VR has no default CPU Cooler and Graphics Card
+BEST-GAMER has no default RAM and Operating System
+BETTER-GAMER has no default Chassis Fans and Power Supply Unit
+
+-------------------------------------------------------------
+MOTHERBOARD & RAM Check
+-------------------------------------------------------------
+If Motherboard component is DDR4
+then ensure RAM component ONLY has DDR4 options
+If Motherboard component is DDR5
+then ensure RAM component ONLY has DDR5 options
+
+Log File:
+Index,Product Title,SKU,Product ID,URL,Wrong RAM products
+prod1 /// prod2 (wrong RAM product)
+
+Page 3 - Motherboard & RAM
+ULTIMATE-TRADER - 16GB DDR5
+GOOD-TRADER - 32GB DDR4
+
+------------------------------------------------------------
+Check if Liquid Cooler fits in case
+------------------------------------------------------------
+
+NOTES:
+(ONLY SELECT LIQUID COOLER OPTIONS???)
+Get other radiator sizes
+
+--- 120mm radiator ---
+--- 240mm radiator ---
+Fractal Focus G
+Fractal North
+
+--- 280mm radiator ---
+
+--- 360mm radiator ---
+NZXT H9 Flow
+Corsair 5000D Air
+
+--- 420mm radiator ---
+
+PROGRAM:
+If case supports max 240mm radiator,
+then, check CPU Cooler component to see if it contains any options other than 240mm
+if it does, return me a list of the ones that are not 240mm
+
+Repeat the same format for 280mm and 360mm
+
+Get case
+    If no case is selected then select the first available case
+Check against list (above)
+Keep track of which radiator size (list)
+Go to CPU Cooler dropdown and get all options
+    Make sure list contains only the same radiator of previously kept track one
+    If it contains other radiator sizes then make csv file with incorrect radiator size
+
+
+Page 4 - Check if there are any incorrect radiator sizes in CPU Cooler component
+BETTER-CODER - 240MM
+BEST-VIDS - 280MM
+BETTER-VIDS - 240MM and 280MM
+
+------------------------------------------------------------
+Check if chassis fan count is correct depending on CPU Cooler
+------------------------------------------------------------
+-------- LIQUID COOLING FAN SCENARIOS --------
+Cases that support max 4 fans IF using Liquid Cooler:
+    Fractal Focus G Case
+    Fractal North Case
+Cases that support max 7 fans IF using Liquid Cooler:
+    Corsair 5000D Case
+    NZXT H9 Flow Case
+-------- COOLING FAN SCENARIOS --------
+Cases that support max 3 fans IF using cooling fan:
+    Fractal Focus G Case
+Cases that support max 4 fans IF using cooling fan:
+    Fractal North Case
+    NZXT H9 Flow Case
+    Corsair 5000D Airflow Case
+
+PROGRAM:
+If CPU Cooler contains the words "liquid cooling"
+then, grab the selected option for the "Case" component
+then, check against the NOTES list to see how many max fans go with that case IF using Liquid Cooler
+then check "Chassis Fans" component to see if the correct number of max fans is there
+
+If CPU Cooler contains the words "cooling fan"
+then, grab the selected option for the "Case" component
+then, check against the NOTES list to see how many max fans go with that case IF using cooling fan
+then check "Chassis Fans" component to see if the correct number of max fans is there
+
+Page 5 - Chassis Fans
+ULTIMATE-PICS - 7 FANS for Air Coolers, 3 FANS for Liquid Coolers
+GOOD-PICS - 5 FANS for Air Coolers, 4 FANS for Liquid Coolers
+ULTIMATE-PRODUCER - 3 FANS for Air Coolers, 5 FANS for Liquid Coolers
+
+ORDER OF EXECUTION
+Component count
+Component default option
+Motherboard and RAM
+Case and radiator size
+Chassis fan
+
+
+
+
+
+
+
+
+
+
