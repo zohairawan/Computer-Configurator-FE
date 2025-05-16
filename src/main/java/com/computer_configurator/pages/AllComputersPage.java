@@ -49,13 +49,20 @@ public class AllComputersPage extends BasePage {
         return new ProductPage(driver);
     }
 
-    public ProductPage scrollToandClickProduct(int index) {
+    public ProductPage scrollToAndClickProduct(int index) {
         scrollToProduct(index);
-        clickOnProduct(index);
-        return new ProductPage(driver);
+        return clickOnProduct(index);
     }
 
     public void refreshPage() {
         driver.navigate().refresh();
+    }
+
+    public boolean hasNextPageBtn() {
+        return find(nextPageBtnLoc).isDisplayed();
+    }
+
+    public void scrollToAndClickNextPageBtn() {
+        scrollToAndClick(nextPageBtnLoc);
     }
 }
