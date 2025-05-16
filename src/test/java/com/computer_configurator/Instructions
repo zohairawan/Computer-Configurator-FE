@@ -41,7 +41,7 @@ COMPONENT LIST
 Find products that have "Choose an option" selected ("custom built" computers having this option selected is fine though)
 
 Log File:
-Log Index,Product Title,SKU,Product ID,URL,Component with incorrect default option
+Index,Product Title,SKU,Product ID,URL,Component with incorrect default option
 
 Page 2 - Component List (Choose an Option)
 BETTER-VR has no default CPU Cooler and Graphics Card
@@ -146,13 +146,3 @@ Component default option
 Motherboard and RAM
 Case and radiator size
 Chassis fan
-
-
-
-
-
-
-
-
-
-
