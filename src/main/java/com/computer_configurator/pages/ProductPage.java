@@ -45,11 +45,37 @@ public class ProductPage extends BasePage {
         return find(productIDLoc).getText();
     }
 
-    public List<String> getComponentsName() {
-        return findAll(componentNamesLoc)
-                .stream()
-                .map(WebElement::getText)
-                .toList();
+    // AI wrote this
+//    public List<String> getComponentsName() {
+//        return findAll(componentNamesLoc)
+//                .stream()
+//                .map(WebElement::getText)
+//                .toList();
+//    }
+
+    public List<String> getComponentNames() {
+        List<WebElement> componentsElem = findAll(componentNamesLoc);
+        List<String> componentNames = new ArrayList<>();
+        for (WebElement componentElem : componentsElem) {
+            componentNames.add(componentElem.getText().toLowerCase());
+        }
+        return componentNames;
+    }
+
+    public List<String> getMissingComponents() {
+        List<String> missingComponents = new ArrayList<>();
+        List<String> componentNames = getComponentNames();
+        for (String component : componentMasterList) {
+            if (!componentNames.contains(component.toLowerCase())) {
+                missingComponents.add(component);
+            }
+        }
+        return missingComponents;
+    }
+
+    public String getMissingComponentsFormatted() {
+        List<String> missingComponents = getMissingComponents();
+        return String.join(" /// ", missingComponents);
     }
 
     public int getExpectedNumOfComponents() {
