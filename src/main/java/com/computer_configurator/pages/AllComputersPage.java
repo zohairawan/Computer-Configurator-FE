@@ -41,11 +41,11 @@ public class AllComputersPage extends BasePage {
     }
 
     public void scrollToProduct(int index) {
-        scrollTo(By.xpath("(//h2[@class='woocommerce-loop-product__title'])["+index+"]"));
+        scrollTo(By.xpath("(//h2[@class='woocommerce-loop-product__title'])[" + index + "]"));
     }
 
     public ProductPage clickOnProduct(int index) {
-        click(By.xpath("(//h2[@class='woocommerce-loop-product__title'])["+index+"]"));
+        click(By.xpath("(//h2[@class='woocommerce-loop-product__title'])[" + index + "]"));
         return new ProductPage(driver);
     }
 
@@ -59,7 +59,20 @@ public class AllComputersPage extends BasePage {
     }
 
     public boolean hasNextPageBtn() {
-        return find(nextPageBtnLoc).isDisplayed();
+        try {
+            return find(nextPageBtnLoc).isDisplayed();
+        } catch (NoSuchElementException e) {
+            System.out.println("Next page button not found...ending program"); // todo replace with logging
+            return false;
+        }
+    }
+
+    public boolean goToNextPage() {
+        if (hasNextPageBtn()) {
+            scrollToAndClickNextPageBtn();
+            return true;
+        }
+        return false;
     }
 
     public void scrollToAndClickNextPageBtn() {
