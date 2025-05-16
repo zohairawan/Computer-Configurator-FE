@@ -53,7 +53,7 @@ public class ProductPage extends BasePage {
 //                .toList();
 //    }
 
-    public List<String> getComponentNames() {
+    public List<String> getComponentNamesPresentOnPage() {
         List<WebElement> componentsElem = findAll(componentNamesLoc);
         List<String> componentNames = new ArrayList<>();
         for (WebElement componentElem : componentsElem) {
@@ -64,7 +64,7 @@ public class ProductPage extends BasePage {
 
     public List<String> getMissingComponents() {
         List<String> missingComponents = new ArrayList<>();
-        List<String> componentNames = getComponentNames();
+        List<String> componentNames = getComponentNamesPresentOnPage();
         for (String component : componentMasterList) {
             if (!componentNames.contains(component.toLowerCase())) {
                 missingComponents.add(component);
@@ -73,16 +73,7 @@ public class ProductPage extends BasePage {
         return missingComponents;
     }
 
-    public String getMissingComponentsFormatted() {
-        List<String> missingComponents = getMissingComponents();
-        return String.join(" /// ", missingComponents);
-    }
-
     public int getExpectedNumOfComponents() {
         return expectedNumOfComponents;
-    }
-
-    public List<String> getComponentMasterList() {
-        return componentMasterList;
     }
 }
