@@ -5,6 +5,10 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class AllComputersPage extends BasePage {
 
@@ -15,6 +19,8 @@ public class AllComputersPage extends BasePage {
 
     // Locators
     private final By acceptCookiesBtnLoc = By.xpath("//button[normalize-space()='Accept']");
+    private final By nextPageBtnLoc = By.xpath("//a[@class='next page-numbers']");
+    private final By productsLoc = By.xpath("//ul[@class='products products_style_centered columns-2']/li");
 
     // Actions
     public void clickAcceptCookiesBtn() {
@@ -28,8 +34,28 @@ public class AllComputersPage extends BasePage {
         }
     }
 
+    public int getTotalProductsOnPage() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(productsLoc));
+        return findAll(productsLoc).size();
+    }
+
+    public void scrollToProduct(int index) {
+        scrollTo(By.xpath("(//h2[@class='woocommerce-loop-product__title'])["+index+"]"));
+    }
+
     public ProductPage clickOnProduct(int index) {
         click(By.xpath("(//h2[@class='woocommerce-loop-product__title'])["+index+"]"));
         return new ProductPage(driver);
+    }
+
+    public ProductPage scrollToandClickProduct(int index) {
+        scrollToProduct(index);
+        clickOnProduct(index);
+        return new ProductPage(driver);
+    }
+
+    public void refreshPage() {
+        driver.navigate().refresh();
     }
 }
