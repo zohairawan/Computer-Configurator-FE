@@ -47,6 +47,11 @@ public class BasePage {
         ((JavascriptExecutor) driver).executeScript(script, webElement);
     }
 
+    public void scrollToAndClick(By locator) {
+        scrollTo(locator);
+        click(locator);
+    }
+
     public String getCurrentURL() {
         return driver.getCurrentUrl();
     }
