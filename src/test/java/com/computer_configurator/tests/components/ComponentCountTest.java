@@ -3,7 +3,6 @@ package com.computer_configurator.tests.components;
 import com.computer_configurator.pages.AllComputersPage;
 import com.computer_configurator.pages.ProductPage;
 import com.computer_configurator.tests.base.BaseTest;
-import org.openqa.selenium.NoSuchElementException;
 import org.testng.annotations.Test;
 
 import java.io.FileNotFoundException;
@@ -33,7 +32,9 @@ public class ComponentCountTest extends BaseTest {
                         List<String> componenetNamesMasterList = productPage.getComponentMasterList();
                         for (String componentNameML : componenetNamesMasterList) {
                             if (componentNames.stream().noneMatch(name -> name.equalsIgnoreCase(componentNameML))) {
-                                if (!missingComponents.isEmpty()) {missingComponents.append(" /// ");}
+                                if (!missingComponents.isEmpty()) {
+                                    missingComponents.append(" /// ");
+                                }
                                 missingComponents.append(componentNameML);
                             }
                         }
@@ -54,16 +55,11 @@ public class ComponentCountTest extends BaseTest {
                     }
 
                     driver.navigate().back();
-    //                allComputersPage.refreshPage(); todo uncomment
+//                    allComputersPage.refreshPage(); // todo uncomment
                 }
 
-                // Click on next page
-                try {
-                    if (allComputersPage.hasNextPageBtn()) {
-                        allComputersPage.scrollToAndClickNextPageBtn();
-                    }
-                } catch (NoSuchElementException e) {
-                    System.out.println("No more pages left...ending program"); // todo replace with logging
+                // Click on next page - Pagination
+                if (!allComputersPage.goToNextPage()) {
                     break;
                 }
             }
