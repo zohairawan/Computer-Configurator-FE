@@ -1,0 +1,9 @@
+<suite name="Parallel Suite" parallel="tests">
+    <test name="Component Count">
+        <parameter name="browser" value="chrome"/>
+        <parameter name="url" value="https://www.staging2.computerconfigurator.com/product-category/all-computers/"/>
+        <classes>
+            <class name="com.computer_configurator.tests.components.ComponentCountTest"/>
+        </classes>
+    </test>
+</suite>
