@@ -65,6 +65,14 @@ public class AllComputersPage extends BasePage {
         return clickOnProductJS(index);
     }
 
+    public String getProductName(int index) {
+        return find(By.xpath("(//h2[@class='woocommerce-loop-product__title']/a)[1]")).getText();
+    }
+
+    public boolean isCustomBuiltComputer(int index) {
+        return getProductName(index).toLowerCase().contains("custom built");
+    }
+
     public void refreshPage() {
         driver.navigate().refresh();
     }
