@@ -49,10 +49,11 @@ public class ProductPage extends BasePage {
     }
 
     public List<String> getComponentNamesWithNoOptionSelected() {
-        List<WebElement> all = findAll(By.xpath("//select/option[@selected and normalize-space()='Choose an option']/ancestor::div[@class='component_inner']/preceding-sibling::div//span[@class='component_title_text step_title_text']"));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
+        List<WebElement> componentsWithNoOptionSelected = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath("//select/option[@selected and normalize-space()='Choose an option']/ancestor::div[@class='component_inner']/preceding-sibling::div//span[@class='component_title_text step_title_text']")));
         List<String> componentNames = new ArrayList<>();
-        for (WebElement webElement : all) {
-            componentNames.add(webElement.getText());
+        for (WebElement componentWithNoOptionSelected : componentsWithNoOptionSelected) {
+            componentNames.add(componentWithNoOptionSelected.getText());
         }
         return componentNames;
     }

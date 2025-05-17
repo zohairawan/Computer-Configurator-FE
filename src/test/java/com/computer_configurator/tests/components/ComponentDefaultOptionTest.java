@@ -25,20 +25,13 @@ public class ComponentDefaultOptionTest extends BaseTest {
                 for (int i = 0; i < totalProductsOnPage; i++) {
                     if (!allComputersPage.isCustomBuiltComputer(i + 1)) {
                         ProductPage productPage = allComputersPage.scrollToAndClickProduct(i + 1);
-                        try {
-                            List<String> componentNamesWithNoOptionSelected = productPage.getComponentNamesWithNoOptionSelected();
-                            for (String s : componentNamesWithNoOptionSelected) { // todo delete
-                                System.out.println(s);
-                            }
-                            if (!componentNamesWithNoOptionSelected.isEmpty()) {
-                                csvLogger.writeFormattedEntry(
-                                        index++, productPage.getProductTitle(), productPage.getSku(),
-                                        productPage.getProductID(), productPage.getCurrentURL(),
-                                        componentNamesWithNoOptionSelected
-                                );
-                            }
-                        } catch (Exception e) {
-                            System.out.println("All default component options selected");
+                        List<String> componentNamesWithNoOptionSelected = productPage.getComponentNamesWithNoOptionSelected();
+                        if (!componentNamesWithNoOptionSelected.isEmpty()) {
+                            csvLogger.writeFormattedEntry(
+                                    index++, productPage.getProductTitle(), productPage.getSku(),
+                                    productPage.getProductID(), productPage.getCurrentURL(),
+                                    componentNamesWithNoOptionSelected
+                            );
                         }
                         driver.navigate().back();
                     }

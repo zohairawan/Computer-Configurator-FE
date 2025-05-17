@@ -16,8 +16,7 @@ public class ComponentCountTest extends BaseTest {
             AllComputersPage allComputersPage = new AllComputersPage(driver);
             int index = 1;
 
-//            while (true) {
-            for (int j = 0; j < 1; j++) {
+            while (true) {
                 allComputersPage.clickAcceptCookiesBtn();
                 int totalProductsOnPage = allComputersPage.getTotalProductsOnPage();
 
@@ -34,11 +33,10 @@ public class ComponentCountTest extends BaseTest {
                     driver.navigate().back();
 //                    allComputersPage.refreshPage(); // todo uncomment
                 }
+                if (!allComputersPage.goToNextPage()) {
+                    break;
+                }
             }
-//                if (!allComputersPage.goToNextPage()) {
-//                    break;
-//                }
-//            }
         } catch (Exception e) {
             e.printStackTrace();
 //            System.out.println("File does not exist...ending test"); // todo replace with logging
