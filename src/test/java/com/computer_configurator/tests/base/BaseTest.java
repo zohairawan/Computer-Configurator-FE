@@ -1,3 +1,8 @@
+/**
+ * Configures OS, browser, and URL
+ * Stores fields/methods that every test will require
+ */
+
 package com.computer_configurator.tests.base;
 
 import org.openqa.selenium.WebDriver;
