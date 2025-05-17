@@ -37,19 +37,30 @@ public class BasePage {
         find(locator).click();
     }
 
+    public void clickJS(By locator) {
+        WebElement webElement = find(locator);
+        String script = "arguments[0].click;";
+        ((JavascriptExecutor) driver).executeScript(script, webElement);
+    }
+
     public void scrollTo(By locator) {
         new Actions(driver).scrollToElement(find(locator)).perform();
     }
 
     public void scrollToJS(By locator) {
         WebElement webElement = find(locator);
-        String script = "arguments[0].scrollIntoView(true);";
+        String script = "arguments[0].scrollIntoView({block: 'center'});";
         ((JavascriptExecutor) driver).executeScript(script, webElement);
     }
 
     public void scrollToAndClick(By locator) {
         scrollTo(locator);
         click(locator);
+    }
+
+    public void scrollToAndClickJS(By locator) {
+        scrollToJS(locator);
+        clickJS(locator);
     }
 
     public String getCurrentURL() {
