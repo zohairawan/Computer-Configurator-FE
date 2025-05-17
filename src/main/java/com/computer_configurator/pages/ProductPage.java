@@ -44,6 +44,19 @@ public class ProductPage extends BasePage {
         return findAll(componentsLoc).size();
     }
 
+    public String getComponentName(int index) {
+        return find(By.xpath("(//span[@class='component_title_text step_title_text'])[" + index + "]")).getText();
+    }
+
+    public List<String> getComponentNamesWithNoOptionSelected() {
+        List<WebElement> all = findAll(By.xpath("//select/option[@selected and normalize-space()='Choose an option']/ancestor::div[@class='component_inner']/preceding-sibling::div//span[@class='component_title_text step_title_text']"));
+        List<String> componentNames = new ArrayList<>();
+        for (WebElement webElement : all) {
+            componentNames.add(webElement.getText());
+        }
+        return componentNames;
+    }
+
     // AI wrote this
 //    public List<String> getComponentsName() {
 //        return findAll(componentNamesLoc)
@@ -52,7 +65,7 @@ public class ProductPage extends BasePage {
 //                .toList();
 //    }
 
-    public List<String> getComponentNamesPresentOnPage() {
+    public List<String> getAllComponentNamesPresentOnPage() {
         List<WebElement> componentsElem = findAll(componentNamesLoc);
         List<String> componentNames = new ArrayList<>();
         for (WebElement componentElem : componentsElem) {
@@ -63,7 +76,7 @@ public class ProductPage extends BasePage {
 
     public List<String> getMissingComponents() {
         List<String> missingComponents = new ArrayList<>();
-        List<String> componentNames = getComponentNamesPresentOnPage();
+        List<String> componentNames = getAllComponentNamesPresentOnPage();
         for (String component : componentMasterList) {
             if (!componentNames.contains(component.toLowerCase())) {
                 missingComponents.add(component);
