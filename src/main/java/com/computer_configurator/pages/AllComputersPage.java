@@ -1,10 +1,7 @@
 package com.computer_configurator.pages;
 
 import com.computer_configurator.pages.base.BasePage;
-import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -54,14 +51,30 @@ public class AllComputersPage extends BasePage {
         return clickOnProduct(index);
     }
 
+    public void scrollToProductJS(int index) {
+        scrollToJS(By.xpath("(//h2[@class='woocommerce-loop-product__title'])[" + index + "]"));
+    }
+
+    public ProductPage clickOnProductJS(int index) {
+        clickJS(By.xpath("(//h2[@class='woocommerce-loop-product__title'])[" + index + "]"));
+        return new ProductPage(driver);
+    }
+
+    public ProductPage scrollToAndClickProductJS(int index) {
+        scrollToProductJS(index);
+        return clickOnProductJS(index);
+    }
+
     public void refreshPage() {
         driver.navigate().refresh();
     }
 
     public boolean hasNextPageBtn() {
         try {
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+            wait.until(ExpectedConditions.visibilityOfElementLocated(nextPageBtnLoc));
             return find(nextPageBtnLoc).isDisplayed();
-        } catch (NoSuchElementException e) {
+        } catch (NoSuchElementException | TimeoutException e) {
             System.out.println("Next page button not found...ending program"); // todo replace with logging
             return false;
         }
