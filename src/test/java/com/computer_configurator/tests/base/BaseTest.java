@@ -7,23 +7,36 @@ package com.computer_configurator.tests.base;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeTest;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.annotations.*;
 
 public class BaseTest {
 
     protected WebDriver driver;
 
     @BeforeTest
-    public void setUp() {
-        driver = new ChromeDriver();
+    @Parameters({"browser"})
+    public void setUp(@Optional String browser) {
+        if (browser != null) {
+            switch (browser.toLowerCase()) {
+                case "chrome" -> driver = new ChromeDriver();
+                case "edge" -> driver = new EdgeDriver();
+                case "firefox" -> driver = new FirefoxDriver();
+                default -> {
+                    return;
+                }
+            }
+        } else {
+            driver = new ChromeDriver();
+        }
         driver.manage().window().maximize();
     }
 
     @BeforeMethod
-    public void loadApplication() {
-        driver.get("https://www.staging2.computerconfigurator.com/product-category/all-computers/");
+    @Parameters({"url"})
+    public void loadApplication(String url) {
+        driver.get(url);
     }
 
     @AfterTest
