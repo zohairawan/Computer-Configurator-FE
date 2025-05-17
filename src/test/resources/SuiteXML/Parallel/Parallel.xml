@@ -6,4 +6,12 @@
             <class name="com.computer_configurator.tests.components.ComponentCountTest"/>
         </classes>
     </test>
+
+    <test name="Component Default Option">
+        <parameter name="browser" value="chrome"/>
+        <parameter name="url" value="https://www.staging2.computerconfigurator.com/product-category/all-computers/"/>
+        <classes>
+            <class name="com.computer_configurator.tests.components.ComponentDefaultOptionTest"/>
+        </classes>
+    </test>
 </suite>
