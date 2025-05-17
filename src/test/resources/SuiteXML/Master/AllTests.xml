@@ -1,26 +1,10 @@
 <!--<suite name="Master Suite" parallel="tests">-->
 <suite name="Master Suite">
-<!--    <test name="All Tests">-->
-<!--        <parameter name="browser" value="chrome"/>-->
-<!--        <parameter name="url" value="https://www.staging2.computerconfigurator.com/product-category/all-computers/"/>-->
-<!--        <classes>-->
-<!--            <class name="com.computer_configurator.tests.components.ComponentCountTest"/>-->
-<!--        </classes>-->
-<!--    </test>-->
-
-    <test name="All Tests2">
-        <parameter name="browser" value="firefox"/>
+    <test name="All Tests">
+        <parameter name="browser" value="chrome"/>
         <parameter name="url" value="https://www.staging2.computerconfigurator.com/product-category/all-computers/"/>
         <classes>
             <class name="com.computer_configurator.tests.components.ComponentCountTest"/>
         </classes>
     </test>
-
-<!--    <test name="All Tests3">-->
-<!--        <parameter name="browser" value="edge"/>-->
-<!--        <parameter name="url" value="https://www.staging2.computerconfigurator.com/product-category/all-computers/"/>-->
-<!--        <classes>-->
-<!--            <class name="com.computer_configurator.tests.components.ComponentCountTest"/>-->
-<!--        </classes>-->
-<!--    </test>-->
 </suite>
