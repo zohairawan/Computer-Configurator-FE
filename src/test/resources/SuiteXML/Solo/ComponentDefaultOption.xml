@@ -1,0 +1,10 @@
+<!--<suite name="Master Suite" parallel="tests">-->
+<suite name="Solo Suite">
+    <test name="Component Default Option Tests">
+        <parameter name="browser" value="chrome"/>
+        <parameter name="url" value="https://www.staging2.computerconfigurator.com/product-category/all-computers/page/2/"/>
+        <classes>
+            <class name="com.computer_configurator.tests.components.ComponentDefaultOptionTest"/>
+        </classes>
+    </test>
+</suite>
