@@ -9,8 +9,8 @@ public class CsvLogger implements AutoCloseable{
 
     private final PrintWriter writer;
 
-    public CsvLogger(String filePath) throws IOException {
-        this.writer = new PrintWriter(new FileWriter(filePath));
+    public CsvLogger(String fileName) throws IOException {
+        this.writer = new PrintWriter(new FileWriter(System.getProperty("user.dir") + "/src/test/java/com/computer_configurator/csv_logs/"+ fileName + ".csv"));
     }
 
     public void writeEntry(String entry) {
