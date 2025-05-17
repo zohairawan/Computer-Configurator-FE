@@ -10,20 +10,19 @@ public class ComponentCountTest extends BaseTest {
 
     @Test
     public void testComponentCount() {
-        String fileName = System.getProperty("user.dir") + "/src/test/java/com/computer_configurator/csv_logs/ComponentCount.csv";
-        try (CsvLogger csvLogger = new CsvLogger(fileName)) {
+        try (CsvLogger csvLogger = new CsvLogger("ComponentCount")) {
             csvLogger.writeEntry("Index,Component Count,Product Title,SKU,Product ID,URL,Missing Components");
 
             AllComputersPage allComputersPage = new AllComputersPage(driver);
+            int index = 1;
 
 //            while (true) {
             for (int j = 0; j < 1; j++) {
                 allComputersPage.clickAcceptCookiesBtn();
                 int totalProductsOnPage = allComputersPage.getTotalProductsOnPage();
-                int index = 1;
 
-                for (int i = 1; i <= totalProductsOnPage; i++) {
-                    ProductPage productPage = allComputersPage.scrollToAndClickProduct(i);
+                for (int i = 0; i < totalProductsOnPage; i++) {
+                    ProductPage productPage = allComputersPage.scrollToAndClickProduct(i + 1);
                     int actualNumOfComponents = productPage.getNumOfComponents();
 
                     if (actualNumOfComponents != productPage.getExpectedNumOfComponents()) {
