@@ -1,0 +1,7 @@
+<suite name="Master Suite">
+    <test name="All Tests">
+        <classes>
+            <class name="com.computer_configurator.tests.components.ComponentCountTest"/>
+        </classes>
+    </test>
+</suite>
